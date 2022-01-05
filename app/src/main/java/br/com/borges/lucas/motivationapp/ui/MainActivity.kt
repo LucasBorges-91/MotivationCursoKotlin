@@ -1,7 +1,8 @@
-package br.com.borges.lucas.motivationapp
+package br.com.borges.lucas.motivationapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.borges.lucas.motivationapp.R
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
