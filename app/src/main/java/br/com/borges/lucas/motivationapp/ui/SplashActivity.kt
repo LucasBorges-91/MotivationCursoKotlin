@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import br.com.borges.lucas.motivationapp.databinding.ActivityMainBinding
 import br.com.borges.lucas.motivationapp.databinding.ActivitySplashBinding
+import br.com.borges.lucas.motivationapp.infra.MotivationConstants
 import br.com.borges.lucas.motivationapp.infra.SecurityPreferences
 
 class SplashActivity : AppCompatActivity() {
@@ -30,7 +31,7 @@ class SplashActivity : AppCompatActivity() {
   private fun handleSave() {
     val name = binding.etName.text.toString()
     if ( name != "" ) {
-      mSecurityPreferences.storeString( "name", name )
+      mSecurityPreferences.storeString( MotivationConstants.KEY.PERSON_NAME, name )
       startActivity( Intent( this, MainActivity::class.java ) )
     } else {
       Toast.makeText( this, "Informe o nome para seguir em frente", Toast.LENGTH_SHORT)
