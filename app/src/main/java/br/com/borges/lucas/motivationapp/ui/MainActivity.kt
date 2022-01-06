@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     supportActionBar?.hide()
     mSecurityPreferences = SecurityPreferences( this )
     binding.tvName.text = mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
+
+    val name = mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
+    binding.tvName.text = "Olá, ${name}"
+
     //Logica inicial de seleção
     binding.ivAll.setColorFilter( ContextCompat.getColor( this, R.color.colorAccent ) )
 

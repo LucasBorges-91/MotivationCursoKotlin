@@ -21,6 +21,8 @@ class SplashActivity : AppCompatActivity() {
     supportActionBar?.hide()
     mSecurityPreferences = SecurityPreferences( this )
 
+    verifyName()
+
     binding.btSave.setOnClickListener{
       handleSave()
     }
@@ -28,11 +30,20 @@ class SplashActivity : AppCompatActivity() {
 
   }
 
+  private fun verifyName() {
+    val name = mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
+    if ( name != "" ) {
+      mSecurityPreferences.storeString(MotivationConstants.KEY.PERSON_NAME, name)
+      startActivity(Intent(this, MainActivity::class.java))
+    }
+  }
+
   private fun handleSave() {
     val name = binding.etName.text.toString()
     if ( name != "" ) {
       mSecurityPreferences.storeString( MotivationConstants.KEY.PERSON_NAME, name )
       startActivity( Intent( this, MainActivity::class.java ) )
+      //finish() - mata activity anterior impossibilitando de usar o botão voltar
     } else {
       Toast.makeText( this, "Informe o nome para seguir em frente", Toast.LENGTH_SHORT)
         .show()
